@@ -115,6 +115,43 @@ nmap-scanner/
 
 <img width="1735" height="638" alt="image" src="https://github.com/user-attachments/assets/67887e3c-535c-470c-9c52-a569b348d835" />
 
+### Para programar una rutina lo puedes hacer con el siguiente codigo
+1️⃣ Abrir la terminal
+
+Puedes usar PowerShell, CMD o la terminal de PyCharm (el panel inferior donde puedes escribir comandos).
+
+2️⃣ Ir a la carpeta donde está tu script Python
+Por ejemplo:
+
+cd "C:\Users\USER\PycharmProjects\Tolerante a fallas\Workflow managers"
+
+
+3️⃣ Construir el deployment
+Ejecuta:
+
+prefect deployment build "Workflow managers.py":nmap_scan_flow -n "Escaneo Nocturno"
+
+
+Esto:
+
+Busca en Workflow managers.py la función nmap_scan_flow.
+
+Crea un archivo YAML (por defecto nmap_scan_flow-deployment.yaml).
+
+4️⃣ Aplicar el deployment
+
+prefect deployment apply nmap_scan_flow-deployment.yaml
+
+
+Esto registra el deployment en tu servidor Prefect local.
+
+5️⃣ Arrancar un agente Prefect
+
+prefect agent start
+
+
+Esto lanza un agente que escucha jobs pendientes y ejecuta el flujo según la programación que configures.
+
 Reporte de Escaneo Nmap
 =========================
 
